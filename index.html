@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 — White Hat / Black Hat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero-card">
+            <div>
+                <p class="eyebrow">Data Visualization Ethics</p>
+                <h1>White Hat vs Black Hat: Police Complaint Trends</h1>
+                <p class="hero-copy">This interactive comparison demonstrates how the same data can be shown honestly (white hat visualization) or manipulatively (black hat visualization). This website includes two examples from the NYPD complaint records that show how data can be visualized in a misleading manner. The two examples highlighted are department-wide complaint substantiation rates and officer specific complaint rates, both of which can be accessed via the dropdown menu below.</p>
+            </div>
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <span class="meta-title">Dataset</span>
+                    <p>NYPD complaint records</p>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-title">Years covered</span>
+                    <p>2010 – 2020</p>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-title">Focus</span>
+                    <p>Substantiated and total officer complaint rates</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="switcher-card card">
+
+            <div class="switcher-bar">
+                <label class="switch-label">
+                    <span>Choose example:</span>
+                    <select id="exampleScenario">
+                        <option value="trend" selected>Department-wide substantiation trend</option>
+                        <option value="topOfficers">Officer complaint rankings</option>
+                    </select>
+                </label>
+                <p id="scenarioDescription" class="scenario-description">White hat shows the full substantiation trend while black hat hides older data and exaggerates change with a narrow axis.</p>
+            </div>
+        </section>
+
+        <section class="charts-grid">
+            <div class="chart-card" id="white-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>White Hat</h2>
+                        <p class="caption">Full context, honest scale, and transparent labeling.</p>
+                    </div>
+                    <span class="badge badge-positive">Truthful</span>
+                </div>
+                <p class="panel-copy">Substantiation rate is the percentage of complaints determined to be valid after investigation. This chart shows the full 2010–2020 trend without hiding any years.</p>
+                <div class="chart-controls" id="white-controls">
+                    <label class="control-item">
+                        <span>Timeline range</span>
+                        <select id="whiteRange">
+                            <option value="full">Full timeline (2010–2020)</option>
+                            <option value="recent5">Recent 5 years</option>
+                            <option value="recent3">Recent 3 years</option>
+                        </select>
+                    </label>
+                    <label class="control-item">
+                        <span>Show data points</span>
+                        <input id="showPoints" type="checkbox" checked>
+                    </label>
+                </div>
+                <div class="chart-title" id="whiteChartTitle">Department-wide NYPD Officer Complaint Substantiation Trend</div>
+                <div id="white-vis"></div>
+            </div>
+            <div class="chart-card" id="black-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Black Hat</h2>
+                        <p class="caption">Cherry-picked years with a narrow axis to inflate the trend.</p>
+                    </div>
+                    <span class="badge badge-warning">Misleading</span>
+                </div>
+                <p class="panel-copy">This chart selects only the most recent years and zooms into a narrow 66–76% range. That makes a subtle decline look dramatic and encourages the viewer to think lower substantiation is clearly better.</p>
+                <div class="chart-controls" id="black-controls">
+                    <label class="control-item">
+                        <span>Recent years</span>
+                        <select id="blackYears">
+                            <option value="2">Last 2 years</option>
+                            <option value="3">Last 3 years</option>
+                            <option value="4" selected>Last 4 years</option>
+                        </select>
+                    </label>
+                    <label class="control-item">
+                        <span>Axis zoom</span>
+                        <select id="blackAxis">
+                            <option value="0.66-0.76" selected>66–76%</option>
+                            <option value="0.60-0.80">60–80%</option>
+                            <option value="0.62-0.78">62–78%</option>
+                        </select>
+                    </label>
+                    <label class="control-item">
+                        <span>Show data points</span>
+                        <input id="blackShowPoints" type="checkbox" checked>
+                    </label>
+                </div>
+                <div class="chart-title" id="blackChartTitle">Substantiated NYPD Officer Complaints Significantly Decreasing</div>
+                <div id="black-vis"></div>
+            </div>
+        </section>
+
+        <section class="notes-grid">
+            <div class="note-card">
+                <h3>What substantiation means</h3>
+                <ul>
+                    <li>Substantiation rate = complaints found valid by the review process.</li>
+                    <li>A lower rate is often framed as positive because it suggests fewer validated misconduct cases.</li>
+                    <li>That interpretation is only fair if the data and axis are not manipulated.</li>
+                </ul>
+            </div>
+            <div class="note-card">
+                <h3>Why the black hat is misleading</h3>
+                <ul>
+                    <li>It shows only recent years rather than the full trend.</li>
+                    <li>It zooms into a narrow percentage range to exaggerate small change.</li>
+                    <li>It implies a normal decline is a strong improvement, even though the full story is slimmer.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>Data source: NYPD complaint dataset. Note: substantiation rate reflects investigation outcomes, not proof of wrongdoing.</p>
+    </footer>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
