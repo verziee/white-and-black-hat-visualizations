@@ -13,7 +13,7 @@
             <div>
                 <p class="eyebrow">Data Visualization Ethics</p>
                 <h1>White Hat vs Black Hat: Police Complaint Trends</h1>
-                <p class="hero-copy">This interactive comparison demonstrates how the same data can be shown honestly (white hat visualization) or manipulatively (black hat visualization). This website includes two examples from the NYPD complaint records that show how data can be visualized in a misleading manner. The two examples highlighted are department-wide complaint substantiation rates and officer specific complaint rates, both of which can be accessed via the dropdown menu below.</p>
+                <p class="hero-copy">This interactive comparison demonstrates how the same data can be shown honestly (white hat visualization) or manipulatively (black hat visualization). This website includes two examples from the <a href="https://projects.propublica.org/datastore/#civilian-complaints-against-new-york-city-police-officers" target="_blank">NYPD complaint records</a> that show how data can be visualized in a misleading manner. The two examples highlighted are department-wide complaint substantiation rates and officer specific complaint rates, both of which can be accessed via the dropdown menu below.</p>
             </div>
             <div class="hero-meta">
                 <div class="meta-item">
@@ -71,6 +71,10 @@
                 </div>
                 <div class="chart-title" id="whiteChartTitle">Department-wide NYPD Officer Complaint Substantiation Trend</div>
                 <div id="white-vis"></div>
+                <div class="panel-writeup">
+                    <h3>White Hat Write-Up</h3>
+                    <p id="whiteWriteupText">This visualization uses the NYPD civilian complaint dataset and focuses on complaint outcomes closed between 2010 and 2020. For the trend example, the white hat version shows the full yearly substantiation rate, where substantiation means a complaint was found valid after review. That definition matters because substantiation rate is not the same thing as raw complaint volume. It is the percentage of cases that investigators determined had enough evidence to support the allegation. A lower rate is often framed as positive because it can suggest fewer validated misconduct cases, but that interpretation is only fair if the data and axis are not manipulated. The chart title, axis labels, and explanatory text clearly define the measure being shown. The y-axis uses the full 0 to 100 percent range, which keeps year-to-year variation in honest proportion. The default state also shows the complete timeline instead of a selective slice, preserving context before any interaction happens. Interactive controls are included for exploration, but they do not hide the broader pattern by default. These design decisions support clarity and accuracy because they match the visual encoding to the data and make the chart easier to interpret without exaggerating the trend. The goal of the white hat version is not to force a conclusion but to help the audience understand what changed, how much it changed, and what the dataset can reasonably support.</p>
+                </div>
             </div>
             <div class="chart-card" id="black-panel">
                 <div class="panel-header">
@@ -105,27 +109,24 @@
                 </div>
                 <div class="chart-title" id="blackChartTitle">Substantiated NYPD Officer Complaints Significantly Decreasing</div>
                 <div id="black-vis"></div>
+                <div class="panel-writeup">
+                    <h3>Black Hat Write-Up</h3>
+                    <p id="blackWriteupText">The black hat version uses the same underlying complaint dataset, but it is designed to steer the viewer toward a stronger conclusion than the evidence deserves. It removes older years and keeps only the most recent observations, which prevents the audience from seeing whether the displayed drop is part of a longer, flatter pattern. It also narrows the y-axis to a small percentage window, making a modest change appear much sharper than it would on an honest scale. The caption and framing encourage the viewer to read the chart as proof of a significant improvement even though the broader context is hidden. This is manipulative because it does not falsify the values directly; instead, it distorts perception by selecting a limited time frame and exaggerating the slope visually. It shows only recent years rather than the full trend, zooms into a narrow percentage range to exaggerate small change, and implies a normal decline is a strong improvement even though the full story is slimmer. Those choices distort perception because the audience is more likely to react to the steep-looking line than to question the missing context. The result is a chart that feels persuasive at a glance while quietly suppressing the information a careful viewer would need to judge the trend fairly. In other words, the black hat chart does not lie with fake numbers, but it does mislead by framing true numbers in a more dramatic way.</p>
+                </div>
             </div>
         </section>
 
         <section class="notes-grid">
             <div class="note-card">
-                <h3>What substantiation means</h3>
-                <ul>
-                    <li>Substantiation rate = complaints found valid by the review process.</li>
-                    <li>A lower rate is often framed as positive because it suggests fewer validated misconduct cases.</li>
-                    <li>That interpretation is only fair if the data and axis are not manipulated.</li>
-                </ul>
+                <h3>AI Usage</h3>
+                <p id="aiUsageText">AI was used to support drafting and refinement for the webpage content and layout. It helped generate clearer explanations of the white hat and black hat design choices, suggest wording improvements, and speed up iterative edits to the page structure. However, the dataset selection, visualization logic, ethical framing, and final evaluation of whether the charts are accurate or misleading was by our own judgement.</p>
             </div>
             <div class="note-card">
-                <h3>Why the black hat is misleading</h3>
-                <ul>
-                    <li>It shows only recent years rather than the full trend.</li>
-                    <li>It zooms into a narrow percentage range to exaggerate small change.</li>
-                    <li>It implies a normal decline is a strong improvement, even though the full story is slimmer.</li>
-                </ul>
+                <h3>Development Process</h3>
+                <p id="developmentProcessText">We first decided on the dataset, brainstormed what to focus on, and then had one person do the white hat visualization while the other worked on the black hat version. Our main focus was the department-wide substantiation trend, but we also decided to add another set of visualizations for officer complaint rankings and equally split the work. We roughly spent around 5 hours actively working on this assignment, with iterating on the visualization designs taking the most time after AI assistance.</p>
             </div>
         </section>
+
     </div>
 
     <footer class="footer">
