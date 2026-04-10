@@ -20,21 +20,6 @@ const panelCopies = {
 	}
 };
 
-const notesContent = {
-	trend: {
-		what: 'What substantiation means',
-		list: ['Substantiation rate = complaints found valid by the review process.', 'A lower rate is often framed as positive because it suggests fewer validated misconduct cases.', 'That interpretation is only fair if the data and axis are not manipulated.'],
-		why: 'Why the black hat is misleading',
-		list2: ['It shows only recent years rather than the full trend.', 'It zooms into a narrow percentage range to exaggerate small change.', 'It implies a normal decline is a strong improvement, even though the full story is slimmer.']
-	},
-	topOfficers: {
-		what: 'What officer accountability means',
-		list: ['Substantiated complaints are those found valid after investigation.', 'Total complaints include all allegations, regardless of outcome.', 'Focusing on total complaints can mislead by including unsubstantiated claims.'],
-		why: 'Why the black hat is misleading',
-		list2: ['It prioritizes total complaints over substantiated ones.', 'It uses a truncated axis to make small differences look large.', 'It hides the substantiation rate, which is the key measure of validity.']
-	}
-};
-
 const chartTitles = {
 	trend: {
 		white: 'Department-wide NYPD Officer Complaint Substantiation Trend',
@@ -45,6 +30,41 @@ const chartTitles = {
 		black: 'NYPD Officers with Most Complaints'
 	}
 };
+
+const writeupContent = {
+	trend: {
+		white: {
+			copy: 'This visualization uses the NYPD civilian complaint dataset and focuses on complaint outcomes closed between 2010 and 2020. For the trend example, the white hat version shows the full yearly substantiation rate, where substantiation means a complaint was found valid after review. That definition matters because substantiation rate is not the same thing as raw complaint volume. It is the percentage of cases that investigators determined had enough evidence to support the allegation. A lower rate is often framed as positive because it can suggest fewer validated misconduct cases, but that interpretation is only fair if the data and axis are not manipulated. The chart title, axis labels, and explanatory text clearly define the measure being shown. The y-axis uses the full 0 to 100 percent range, which keeps year-to-year variation in honest proportion. The default state also shows the complete timeline instead of a selective slice, preserving context before any interaction happens. Interactive controls are included for exploration, but they do not hide the broader pattern by default. These design decisions support clarity and accuracy because they match the visual encoding to the data and make the chart easier to interpret without exaggerating the trend. The goal of the white hat version is not to force a conclusion but to help the audience understand what changed, how much it changed, and what the dataset can reasonably support.'
+		},
+		black: {
+			copy: 'The black hat version uses the same underlying complaint dataset, but it is designed to steer the viewer toward a stronger conclusion than the evidence deserves. It removes older years and keeps only the most recent observations, which prevents the audience from seeing whether the displayed drop is part of a longer, flatter pattern. It also narrows the y-axis to a small percentage window, making a modest change appear much sharper than it would on an honest scale. The caption and framing encourage the viewer to read the chart as proof of a significant improvement even though the broader context is hidden. This is manipulative because it does not falsify the values directly; instead, it distorts perception by selecting a limited time frame and exaggerating the slope visually. It shows only recent years rather than the full trend, zooms into a narrow percentage range to exaggerate small change, and implies a normal decline is a strong improvement even though the full story is slimmer. Those choices distort perception because the audience is more likely to react to the steep-looking line than to question the missing context. The result is a chart that feels persuasive at a glance while quietly suppressing the information a careful viewer would need to judge the trend fairly. In other words, the black hat chart does not lie with fake numbers, but it does mislead by framing true numbers in a more dramatic way.'
+		},
+		ai: {
+			copy: 'AI was used to support drafting and refinement for the webpage content and layout. It helped generate clearer explanations of the white hat and black hat design choices, suggest wording improvements, generate code and speed up iterative edits to the page structure. However, the dataset selection, visualization logic, ethical framing, and final evaluation of whether the charts are accurate or misleading was by our own judgement.'
+		},
+		development: {
+			copy: 'We first decided on the dataset, brainstormed what to focus on, and then had one person do the white hat visualization while the other worked on the black hat version. Our main focus was the department-wide substantiation trend, but we also decided to add another set of visualizations for officer complaint rankings and equally split the work. We roughly spent around 5 hours actively working on this assignment, with iterating on the visualization designs taking the most time after AI assistance.'
+		}
+	},
+	topOfficers: {
+		white: {
+			copy: 'This visualization uses the same NYPD complaint dataset but shifts the focus from yearly trends to officer-level comparisons. In the white hat version, officers are ranked by substantiated complaints rather than by total complaints alone. That design choice matters because substantiated complaints are the measure most closely tied to verified misconduct findings in the dataset. The bars start at zero, which preserves visual proportion and prevents small differences from being overstated. Labels and tooltips provide both substantiated and total complaint counts, giving the audience useful context instead of isolating a single number. The chart title also stays descriptive rather than argumentative, so the viewer is told what is being shown without being pushed toward a loaded conclusion. Together, these choices improve clarity and accuracy because they align the ranking, axis, and annotations with the real question being asked. The visualization still simplifies a complex issue, but it does so transparently and in a way that helps the viewer understand what the data actually supports.'
+		},
+		black: {
+			copy: 'The black hat officer comparison distorts the same dataset by changing the ranking logic and visual scale in ways that encourage a more dramatic interpretation. Instead of emphasizing substantiated complaints, it ranks officers by total complaints, which combines validated and unvalidated allegations into one more alarming-looking measure. It then truncates the x-axis so bars that are numerically close appear much farther apart visually. This makes certain officers look substantially worse than others even when the actual difference is limited. By omitting substantiation as the primary focus, the chart also weakens the connection between the displayed ranking and the implied claim of accountability or misconduct.'
+		},
+		ai: {
+			copy: 'AI was used to support drafting and refinement for the webpage content and layout. It helped generate clearer explanations of the white hat and black hat design choices, suggest wording improvements, generate code and speed up iterative edits to the page structure. However, the dataset selection, visualization logic, ethical framing, and final evaluation of whether the charts are accurate or misleading was by our own judgement.'
+		},
+		development: {
+			copy: 'We first decided on the dataset, brainstormed what to focus on, and then had one person do the white hat visualization while the other worked on the black hat version. Our main focus was the department-wide substantiation trend, but we also decided to add another set of visualizations for officer complaint rankings and equally split the work. We roughly spent around 5 hours actively working on this assignment, with iterating on the visualization designs taking the most time after AI assistance.'
+		}
+	}
+};
+
+writeupContent.topOfficers.white.copy = 'This visualization uses the same NYPD complaint dataset but shifts the focus from yearly trends to officer-level comparisons. In the white hat version, officers are ranked by substantiated complaints rather than by total complaints alone. That design choice matters because substantiated complaints are the measure most closely tied to verified misconduct findings in the dataset. In this context, officer accountability means looking beyond accusation counts and paying attention to whether complaints were actually upheld after investigation. Total complaints include all allegations, regardless of outcome, so using that measure alone can blur the line between accusation and validated finding. The bars start at zero, which preserves visual proportion and prevents small differences from being overstated. Labels and tooltips provide both substantiated and total complaint counts, giving the audience useful context instead of isolating a single number. The chart title also stays descriptive rather than argumentative, so the viewer is told what is being shown without being pushed toward a loaded conclusion. Together, these choices improve clarity and accuracy because they align the ranking, axis, and annotations with the real question being asked. The visualization still simplifies a complex issue, but it does so transparently and in a way that helps the viewer understand what the data actually supports.';
+
+writeupContent.topOfficers.black.copy = 'The black hat officer comparison distorts the same dataset by changing the ranking logic and visual scale in ways that encourage a more dramatic interpretation. Instead of emphasizing substantiated complaints, it ranks officers by total complaints, which combines validated and unvalidated allegations into one more alarming-looking measure. That shift is misleading because total complaints include every allegation regardless of outcome, while substantiated complaints are the ones found valid after investigation. It then truncates the x-axis so bars that are numerically close appear much farther apart visually. This makes certain officers look substantially worse than others even when the actual difference is limited. By omitting substantiation as the primary focus, the chart also weakens the connection between the displayed ranking and the implied claim of accountability or misconduct. It prioritizes total complaints over substantiated ones, uses a truncated axis to make small differences look large, and hides the measure that is most relevant to validity.';
 
 function getSettings(){
 	return {
@@ -72,13 +92,12 @@ function updateChartTitles(settings) {
 	document.getElementById('blackChartTitle').textContent = chartTitles[settings.exampleScenario].black;
 }
 
-function updateNotes(settings){
-	const noteCards = document.querySelectorAll('.note-card');
-	const content = notesContent[settings.exampleScenario];
-	noteCards[0].querySelector('h3').textContent = content.what;
-	noteCards[0].querySelector('ul').innerHTML = content.list.map(li => `<li>${li}</li>`).join('');
-	noteCards[1].querySelector('h3').textContent = content.why;
-	noteCards[1].querySelector('ul').innerHTML = content.list2.map(li => `<li>${li}</li>`).join('');
+function updateWriteups(settings) {
+	const content = writeupContent[settings.exampleScenario];
+	document.getElementById('whiteWriteupText').textContent = content.white.copy;
+	document.getElementById('blackWriteupText').textContent = content.black.copy;
+	document.getElementById('aiUsageText').textContent = content.ai.copy;
+	document.getElementById('developmentProcessText').textContent = content.development.copy;
 }
 
 function updateControls(settings){
@@ -120,7 +139,7 @@ function render(){
 		updateScenarioDescription(settings);
 		updatePanelCopies(settings);
 		updateChartTitles(settings);
-		updateNotes(settings);
+		updateWriteups(settings);
 		updateControls(settings);
 		drawWhite('#white-vis', data, rows, settings);
 		drawBlack('#black-vis', data, rows, settings);
